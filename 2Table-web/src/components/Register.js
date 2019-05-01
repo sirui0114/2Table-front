@@ -3,6 +3,7 @@ import { Form, Input, Button, message,  Select, Radio } from 'antd';
 import $ from 'jquery';
 import { API_ROOT } from '../constants';
 import { Link } from 'react-router-dom';
+import {Upload} from './Upload';
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -38,12 +39,33 @@ constructor() {
       Client: 'User',
       confirmDirty: false,
       autoCompleteResult: [],
+      url: 'https://i.loli.net/2019/04/25/5cc1780ba8f42.png',
     };
   }
 
   handleFormLayoutChange = (e) => {
       this.setState({ Client: e.target.value });
   }
+
+    importFile = (fileItems) => {
+        const formData = new FormData();
+        formData.append('smfile', fileItems[0].file);
+        $.ajax({
+               url: `https://sm.ms/api/upload`,
+               method: 'POST',
+               data: formData,
+               processData: false,
+               contentType: false
+        }).then((response) => {
+             message.success(response.code);
+             this.setState({url : response.data.url});
+        }, (error) => {
+            message.error(error.responseText);
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+
+    }
 
    handleSubmit = (e) => {
      var myHeaders = new Headers();
@@ -63,6 +85,7 @@ constructor() {
                     phone: values.phone,
                     email: values.email,
                     password: values.password,
+                    url: this.state.url,
                 })
             }).then((response) => {
                 message.success(response);
@@ -77,18 +100,20 @@ constructor() {
                 method: 'POST',
                 data: JSON.stringify({
                     client: this.state.Client,
-                    ID: values.UserID,
+                    ID: values.RestaurantID,
                     name: values.name,
                     phone: values.phone,
                     email: values.email,
                     password: values.password,
                     address: values.address,
                     capacity: values.capacity,
+                    url: this.state.url,
                 })
             }).then((response) => {
                 message.success(response);
-            }, (response) => {
-                message.error(response.responseText);
+                console.log(response);
+            }, (error) => {
+                message.error(error.responseText);
             }).catch((error) => {
                 console.log(error);
             });
@@ -219,6 +244,15 @@ constructor() {
                                         <Input />
                           )}
                           </FormItem>
+                          <FormItem {...formItemLayout} label="Profile Photo">
+                                                  {getFieldDecorator('profile', {
+                                                      rules: [{
+                                                      message: 'Please Please input your profile photo!',
+                                                      whitespace: true }]
+                                                  }) (
+                                                      <Upload importFile = {this.importFile}/>
+                                                  )}
+                                               </FormItem>
                           <FormItem {...tailFormItemLayout}>
                                      <Button type="primary" htmlType="submit">Register</Button>
                                      <p>I already have an account, go back to <Link to="/login">login</Link></p>
@@ -306,6 +340,15 @@ constructor() {
                               }) (
                                 <Input />
                               )}
+                     </FormItem>
+                     <FormItem {...formItemLayout} label="Profile Photo">
+                        {getFieldDecorator('profile', {
+                            rules: [{
+                            message: 'Please Please input your profile photo!',
+                            whitespace: true }]
+                        }) (
+                            <Upload importFile = {this.importFile}/>
+                        )}
                      </FormItem>
                      <FormItem {...tailFormItemLayout}>
                                 <Button type="primary" htmlType="submit">Register</Button>

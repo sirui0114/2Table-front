@@ -28,7 +28,7 @@ export class RestaurantCard extends React.Component {
         const link = this.getReserveLink(this.state.id, this.state.userId)
         return (
             <Card style={{ width: '18rem', margin: '1rem'}}>
-            <Card.Img variant="top" src="https://i.loli.net/2019/04/15/5cb3e0210edb5.jpg" />
+            <Card.Img variant="top" src= {this.props.resDetail.url}/>
             <Card.Body>
             <Card.Title>{this.props.resDetail.restaurant}</Card.Title>
             <Card.Text>

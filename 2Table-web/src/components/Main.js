@@ -25,7 +25,7 @@ getShowReserve = ({match}) => {
 }
 
 getRoot = () => {
-    return <Redirect to="/login"/>;
+    return <Redirect to="/home"/>;
 }
 
  render() {
