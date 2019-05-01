@@ -1,0 +1,13 @@
+.c-img {
+    height: 400px;
+
+    object-fit: cover;
+}
+
+h3 {
+    color: white !important;
+}
+
+.carou {
+    margin-bottom: 40px;
+}

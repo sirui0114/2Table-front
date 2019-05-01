@@ -25,19 +25,23 @@ export class RestaurantCard extends React.Component {
     }
 
     render() {
+
+        console.log(this.props.resDetail.url)
         const link = this.getReserveLink(this.state.id, this.state.userId)
         return (
-            <Card style={{ width: '18rem', margin: '1rem'}}>
-            <Card.Img variant="top" src= {this.props.resDetail.url}/>
-            <Card.Body>
+        // <a href={link} className="h-a-null">
+            <Card className="r-card" style={{ width: '30%', height:'300px', margin: '1rem'}}>
+            <a href={link}><Card.Img style={{ height:'180px', objectFit: 'cover'}} variant="top" src= {this.props.resDetail.url}/></a>
+            <a href={link}><Card.Body>
             <Card.Title>{this.props.resDetail.restaurant}</Card.Title>
             <Card.Text>
                 {this.props.resDetail.address}
                 <br/>contact: {this.props.resDetail.phone}
             </Card.Text>
-            <Button variant="primary" href={link}>Reserve</Button>
-            </Card.Body>
+            {/* <Button variant="primary" href={link}>Reserve</Button> */}
+            </Card.Body></a>
         </Card>
+        // </a>
         );
     }
 }

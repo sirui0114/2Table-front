@@ -6,6 +6,9 @@ import { RestaurantCard } from './RestaurantCard';
 import { API_ROOT } from '../constants';
 import $ from 'jquery';
 import { message } from 'antd';
+import { CarouselHeader } from './CarouselHeader';
+
+import '../styles/Home.css';
 
 export class Home extends React.Component {
   constructor(props) {
@@ -18,7 +21,6 @@ export class Home extends React.Component {
   componentDidMount() {
     //fetch
     //setState
-    // 用ajax从数据库调餐馆的list，setState到resList里面，我这里用了temp测试
     $.ajax({
         url: `${API_ROOT}/searchRes`,
         method: 'GET',
@@ -37,13 +39,20 @@ export class Home extends React.Component {
 
   render() {
     return (
+      <div>
+      <CarouselHeader />
       <Container>
+        <div>
+          <h2 className="h-h2">Popular Restaurants</h2>
+          <hr />
+        </div>
         <Row>
           {this.state.resList.map((restaurant)=>{
             return <RestaurantCard key={restaurant.restaurant} resDetail={restaurant} userId = {this.props.userId}/>
           })}
         </Row>
       </Container>
+      </div>
     );
   }
 }

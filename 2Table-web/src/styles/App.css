@@ -5,6 +5,11 @@
 @import 'Header.css';
 @import 'Upload.css';
 
+h1, h2, h3, h4, h5, h6, p, span, a {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.5;
+}
+
 .App {
  text-align: center;
 }
@@ -16,15 +21,15 @@
 }
 
 .App-header {
- background-color: #222;
- height: 60px;
- color: white;
+ /* background-color: orangered; */
+ height: 100px;
+ color: black;
 }
 
 .App-title {
  font-size: 1.5em;
  float: left;
- color: #61dafb;
+ color: black;
  padding-top: 16px;
 }
 
@@ -36,7 +41,12 @@
 }
 
 a {
-  color: #CCE3EC;
+    /* float: left; */
+  color: black;
+}
+
+a:hover {
+    color: orangered;
 }
 
 .App-intro {
@@ -48,4 +58,7 @@ a {
  to { transform: rotate(360deg); }
 }
 
+.main {
+    margin-top: 30px;
+}
 
