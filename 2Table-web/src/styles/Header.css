@@ -3,3 +3,40 @@
  padding-right: 20px;
  float: right;
 }
+
+.header-title{
+    font-family: 'Monoton', cursive;
+    width: 300px;
+    color: orangered;
+    line-height: 1;
+    font-size: 4rem;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top:25px;
+    /* transition: 0.3; */
+}
+
+.header-title:hover {
+    color: #ffc107;
+    -webkit-transition: color 200ms linear;
+    -ms-transition: color 200ms linear;
+    transition: color 200ms linear;
+}
+
+.header-logo {
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 2rem;
+}
+
+.header-logo2 {
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 2rem;
+    margin-left: -2rem;
+}

@@ -87,7 +87,7 @@ export default class NormalLoginForm extends Component {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     Log in
                 </Button>
-                Or <Link to="/register">register now!</Link>
+                <Link to="/register" style={{float:'center'}}>register now!</Link>
             </FormItem>
             </Form>
             );

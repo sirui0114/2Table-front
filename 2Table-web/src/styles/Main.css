@@ -1,6 +1,55 @@
 .main {
- margin-top: 70px;
+ /* margin-top: 70px; */
  display: flex;
  justify-content: center;
 }
 
+.reserve-col1 {
+    /* margin-top: 5rem; */
+    height: 100px;
+    text-align: left;
+    display: block;
+    /* background-color: white; */
+}
+
+.reserve-col1 p{
+    margin-top: 5rem;
+}
+
+.reserve-img {
+    /* height: 400px; */
+    width:100%;
+
+    object-fit: cover;
+    z-index: -1;
+    margin-top: 2rem;
+    /* position: absolute;
+    left: 0;
+    top: 13%; */
+}
+
+.reserve-container {
+    /* margin-top: -4rem; */
+}
+
+.reserve-back {
+    padding-top: 5rem;
+}
+
+.reserve-back:hover {
+    color: orangered;
+}
+
+.reserve-back img{
+    height: 32px;
+    width: 32px;
+    color: orangered;
+}
+
+.show-res-h1 {
+    text-align: left;
+}
+
+.show-res-card {
+    text-align: left;
+}

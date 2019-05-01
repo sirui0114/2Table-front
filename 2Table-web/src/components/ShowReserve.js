@@ -1,11 +1,15 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Image from 'react-bootstrap/Image'
 import Col from 'react-bootstrap/Col'
 import { ReservationCard } from './ReservationCard';
 import { API_ROOT } from '../constants';
 import $ from 'jquery';
 import { message } from 'antd';
+import backlogo from '../asset/back.svg'
+
+import '../styles/Main.css';
 
 export class ShowReserve extends React.Component {
   constructor(props) {
@@ -19,7 +23,6 @@ export class ShowReserve extends React.Component {
   componentDidMount() {
     //fetch
     //setState
-    // 用ajax从数据库调餐馆的list，setState到resList里面，我这里用了temp测试
 
     var clientT = localStorage.getItem('Client') === 'user' ? 'u_Id' : 'r_Id';
     console.log(`${API_ROOT}/viewReservation?${clientT}=${localStorage.getItem('userId')}`);
@@ -41,15 +44,26 @@ export class ShowReserve extends React.Component {
 
 
   render() {
+    console.log(this.state.resvList[0])
+    if (this.state.resvList[0]!=undefined) {
+      var userName = this.state.resvList[0].u_item.name
+      var userPhone = this.state.resvList[0].u_item.phone
+    }
     return (
       <Container>
-        <h2 >
-            Reservation list
-        </h2>
+         <div className="show-res-h1">
+        <h1>
+            Reservation List
+        </h1> 
+        <hr />
+        <a className="reserve-back" href="/home">
+                    <Image src={backlogo} rounded />&nbsp;&nbsp;Back
+        </a>
+        </div>
         <Row>
           {this.state.resvList.map((reservation)=>{
-
-            return <ReservationCard key={reservation.idReservation} resvDetail={reservation} userId = {this.state.userId}/>
+            // console.log(reservation)
+            return <ReservationCard key={reservation.reservation_Id} resvDetail={reservation} userId = {this.state.userId}/>
           })}
         </Row>
       </Container>

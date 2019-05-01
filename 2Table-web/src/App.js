@@ -4,6 +4,8 @@ import { Main } from './components/Main';
 import { TOKEN_KEY } from './constants';
 
 import './styles/App.css';
+import Helmet from 'react-helmet';
+
 
  class App extends React.Component {
    state = {
@@ -28,6 +30,7 @@ import './styles/App.css';
    render() {
      return (
        <div className="App">
+        <Helmet bodyAttributes={{style: 'background-color : white'}}/>
          <Header isLoggedIn={this.state.isLoggedIn} handleLogin={this.handleLogin} handleLogout={this.handleLogout} userId={this.state.userId} client={this.state.client}/>
          <Main isLoggedIn={this.state.isLoggedIn} handleLogin={this.handleLogin} userId={this.state.userId} client={this.state.client}/>
        </div>
